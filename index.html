@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jap & Shu Lee - October 17, 2025</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-container">
+            <div class="nav-brand">Jap & Shu Lee</div>
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                <li><a href="#details" class="nav-link">Details</a></li>
+                <li><a href="#rsvp" class="nav-link">RSVP</a></li>
+            </ul>
+            <!-- Mobile Menu Overlay -->
+            <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+                <div class="mobile-menu-content">
+                    <a href="#details" class="mobile-nav-link">Event Details</a>
+                    <a href="#timeline" class="mobile-nav-link">Schedule</a>
+                    <a href="#gallery" class="mobile-nav-link">Gallery</a>
+                    <a href="#rsvp" class="mobile-nav-link">RSVP</a>
+                    <a href="#faq" class="mobile-nav-link">FAQs</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-bg">
+            <img src="https://images.pexels.com/photos/1444442/pexels-photo-1444442.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1280&fit=crop" alt="Wedding couple" class="hero-image">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">Grow In Love</h1>
+            <p class="hero-subtitle">Jap & Shu Lee</p>
+            <p class="hero-date">Friday 17th October, 2025</p>
+            <div class="countdown" id="countdown">
+                <div class="countdown-item">
+                    <span class="countdown-number" id="days">000</span>
+                    <span class="countdown-label">Days</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="hours">00</span>
+                    <span class="countdown-label">Hours</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="minutes">00</span>
+                    <span class="countdown-label">Minutes</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="seconds">00</span>
+                    <span class="countdown-label">Seconds</span>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- Photo Gallery -->
+    <section id="gallery" class="gallery fade-in-section">
+        <div class="container">
+            <h2 class="section-title">Our Journey</h2>
+            <div class="masonry-grid" id="masonryGrid">
+                <div class="masonry-item">
+                    <img src="https://images.pexels.com/photos/1444442/pexels-photo-1444442.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop" alt="Engagement photo 1" class="gallery-image">
+                </div>
+                <div class="masonry-item tall">
+                    <img src="https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop" alt="Engagement photo 2" class="gallery-image">
+                </div>
+                <div class="masonry-item">
+                    <img src="https://images.pexels.com/photos/1488315/pexels-photo-1488315.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop" alt="Engagement photo 3" class="gallery-image">
+                </div>
+                <div class="masonry-item wide">
+                    <img src="https://images.pexels.com/photos/1043458/pexels-photo-1043458.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop" alt="Engagement photo 4" class="gallery-image">
+                </div>
+                <div class="masonry-item">
+                    <img src="https://images.pexels.com/photos/1444423/pexels-photo-1444423.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop" alt="Engagement photo 5" class="gallery-image">
+                </div>
+                <div class="masonry-item tall">
+                    <img src="https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=800&h=900&fit=crop" alt="Engagement photo 6" class="gallery-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Parallax Section 1 -->
+    <section class="parallax-section parallax-1">
+        <div class="parallax-content">
+            <h3 class="parallax-text">"Love is not about how many days, months, or years you have been together. Love is about how much you love each other every single day."</h3>
+        </div>
+    </section>
+
+    <!-- Event Details -->
+    <section id="details" class="details fade-in-section">
+        <div class="container">
+            <div class="details-content">
+                <div class="invitation-text fade-in-item">
+                    <h2 class="section-title">You're Invited</h2>
+                    <div class="invitation-formal">
+                        <p>Together with their families</p>
+                        <p>As we prepare for one of the most miraculous days of our lives, blah blah blah some inspirational quote thanking people or something and inviting them to "experience this sacred moment with us".</p>
+                        <div class="date-venue">
+                            <p class="wedding-date">Friday, 17th October, 2025</p>
+                            <p class="venue-name">Ruskus Hall, Forest Valley </p>
+                            <p class="venue-address">Bandar Mahkota Cheras, 43200 Cheras, Selangor</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dress-code fade-in-item">
+                    <h3 class="dress-code-title">Dress Code</h3>
+                    <div class="dress-code-image">
+                        <img src="https://images.pexels.com/photos/8849295/pexels-photo-8849295.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Colorful traditional attire example" class="dress-example">
+                    </div>
+                    <p class="dress-code-text">Traditional, Colourful and Modest</p>
+                </div>
+
+                <div class="timeline fade-in-item" id="timeline">
+                    <h3 class="timeline-title">Order of Events</h3>
+                    <div class="timeline-item">
+                        <div class="timeline-time">10:30 AM</div>
+                        <div class="timeline-event">
+                            <h4>Ceremony</h4>
+                            <p>Rukus Hall</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-time">2:00 PM</div>
+                        <div class="timeline-event">
+                            <h4>Mocktail Hour</h4>
+                            <p>Terrace & Gardens</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-time">12:00 PM</div>
+                        <div class="timeline-event">
+                            <h4>Reception</h4>
+                            <p>Grand Ballroom</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-time">02:00 PM</div>
+                        <div class="timeline-event">
+                            <h4>Send Off</h4>
+                            <p>Main Entrance</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Parallax Section 2 -->
+                <section class="parallax-section parallax-2">
+                    <div class="parallax-content">
+                        <h3 class="parallax-text">"Two souls with but a single thought, two hearts that beat as one."</h3>
+                    </div>
+                </section>
+
+                <div class="venue-map fade-in-item">
+                    <h3 class="map-title">Venue Location</h3>
+                    <div class="map-container">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1994.9053763833923!2d101.62191411612587!3d3.1342768175393647!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc35df5b0660a5%3A0x188ca475ecc85304!2sDamansara%20Utama%2C%20Petaling%20Jaya%2C%20Selangor!5e0!3m2!1sen!2smy!4v1697859119922!5m2!1sen!2smy"
+                            width="100%" 
+                            height="300" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                    <div class="venue-info">
+                        <p><strong>Ruscus Hall, Forest Valley</strong></p>
+                        <p>Bandar Mahkota Cheras,<br> 43200 Cheras, Selangor</p>
+                        <div class="travel-advisory">
+                            <h4>⚠️ Important Travel Advisory</h4>
+                            <p>The event is during rush hour, so we anticipate heavier traffic. Please depart earlier to ensure a timely arrival.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RSVP Section -->
+    <section id="rsvp" class="rsvp fade-in-section">
+        <div class="container">
+            <h2 class="section-title">Please RSVP</h2>
+            <p class="rsvp-subtitle">We can't wait to celebrate with you!</p>
+            
+            <form class="rsvp-form fade-in-item" id="rsvpForm">
+                <div class="form-group">
+                    <label for="fullName" class="form-label">Full Name *</label>
+                    <input type="text" id="fullName" name="fullName" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="contactNumber" class="form-label">Contact Number *</label>
+                    <input type="tel" id="contactNumber" name="contactNumber" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Will you be attending? *</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="attendance" value="yes" required>
+                            <span class="radio-custom"></span>
+                            Joyfully accepts
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="attendance" value="no" required>
+                            <span class="radio-custom"></span>
+                            Regretfully declines
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group" id="guestDetailsGroup" style="display: none;">
+                    <label for="guestCount" class="form-label">Number of Guests (including yourself)</label>
+                    <select id="guestCount" name="guestCount" class="form-select">
+                        <option value="1">1 Guest</option>
+                        <option value="2">2 Guests</option>
+                        <option value="3">3 Guests</option>
+                        <option value="4">4 Guests</option>
+                    </select>
+                </div>
+
+                <div class="form-group" id="additionalGuestsGroup" style="display: none;">
+                    <label class="form-label">Additional Guest Names</label>
+                    <div id="additionalGuestFields"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="message" class="form-label">Personal Message (Optional)</label>
+                    <textarea id="message" name="message" class="form-textarea" rows="4" placeholder="Share your excitement or any special message for the happy couple"></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <span class="btn-text">Send RSVP</span>
+                    <span class="btn-loading" style="display: none;">Sending...</span>
+                </button>
+            </form>
+
+            <div class="success-message fade-in-item" id="successMessage" style="display: none;">
+                <h3>Thank You!</h3>
+                <p>Your RSVP has been received. We're so excited to celebrate with you!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq-section fade-in-section">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-container">
+                <div class="faq-item fade-in-item">
+                    <div class="faq-question">
+                        <h4>Q: Can we take photos and videos during the wedding?</h4>
+                    </div>
+                    <div class="faq-answer">
+                        <p>A: We would love for you to be fully present with us during the ceremony. Afterwards, please feel free to take as many photos and videos as you like! We will have a QR code at each table for you to easily upload and share your favorite snapshots from the day with us.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in-item">
+                    <div class="faq-question">
+                        <h4>Q: What about wedding gifts?</h4>
+                    </div>
+                    <div class="faq-answer">
+                        <p>A: Your presence at our wedding is the only gift we ask for! However, should you wish to honour us with a gift, a contribution towards our future together (Ang Pao) would be warmly appreciated.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in-item">
+                    <div class="faq-question">
+                        <h4>Q: Can I bring a guest or a +1?</h4>
+                    </div>
+                    <div class="faq-answer">
+                        <p>A: We have a carefully selected guest list due to venue capacity. Your invitation is just for you unless a +1 has been specifically named. The RSVP form will allow you to confirm for the guests included in your invitation. We appreciate your understanding!</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in-item">
+                    <div class="faq-question">
+                        <h4>Q: Will there be parking at the venue?</h4>
+                    </div>
+                    <div class="faq-answer">
+                        <p>A: Yes, there is ample parking space available at the venue for all our guests.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Jap & Shu Lee's Wedding. Made with love.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
