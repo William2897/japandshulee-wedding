@@ -391,7 +391,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Mobile Parallax */
 @media (max-width: 768px) {
     .parallax-section {
-        background-attachment: scroll;
+        background-attachment: scroll; /* Keep scroll for actual background image */
     }
     
     .parallax-section::before {
@@ -401,7 +401,7 @@ h1, h2, h3, h4, h5, h6 {
         left: 0;
         right: 0;
         bottom: 0;
-        background: inherit;
+        background: inherit; /* Inherit background from parent to apply animation */
         background-size: cover;
         background-position: center;
         animation: mobileParallaxFloat 8s ease-in-out infinite alternate;
@@ -415,12 +415,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .parallax-1 {
-    background-image: linear-gradient(rgba(140, 120, 81, 0.7), rgba(93, 81, 73, 0.7)), 
+    background-image: linear-gradient(rgba(140, 120, 81, 0.7), rgba(93, 81, 73, 0.7)),
                       url('https://images.pexels.com/photos/1444442/pexels-photo-1444442.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1280&fit=crop');
 }
 
 .parallax-2 {
-    background-image: linear-gradient(rgba(140, 120, 81, 0.7), rgba(93, 81, 73, 0.7)), 
+    background-image: linear-gradient(rgba(140, 120, 81, 0.7), rgba(93, 81, 73, 0.7)),
                       url('https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1280&fit=crop');
 }
 
@@ -1142,17 +1142,17 @@ h1, h2, h3, h4, h5, h6 {
         left: 0;
         right: 0;
         bottom: 0;
-        background: linear-gradient(45deg, 
-            rgba(140, 120, 81, 0.1) 0%, 
-            rgba(93, 81, 73, 0.2) 50%, 
+        background: linear-gradient(45deg,
+            rgba(140, 120, 81, 0.1) 0%,
+            rgba(93, 81, 73, 0.2) 50%,
             rgba(140, 120, 81, 0.1) 100%);
         animation: mobileOverlayFloat 6s ease-in-out infinite alternate;
         z-index: 0;
     }
     
     @keyframes mobileOverlayFloat {
-        0% { opacity: 0.3; }
-        100% { opacity: 0.6; }
+        0%, 100% { opacity: 0.7; }
+        50% { opacity: 1; }
     }
     
     /* Mobile-specific fade animations */
@@ -1233,26 +1233,7 @@ h1, h2, h3, h4, h5, h6 {
         position: relative;
     }
     
-    .gallery::after {
-        content: '← Swipe to explore →';
-        position: absolute;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: rgba(140, 120, 81, 0.9);
-        color: white;
-        padding: 0.5rem 1rem;
-        border-radius: 20px;
-        font-size: 0.9rem;
-        font-style: italic;
-        z-index: 10;
-        animation: fadeInOut 3s ease-in-out infinite;
-    }
-    
-    @keyframes fadeInOut {
-        0%, 100% { opacity: 0.7; }
-        50% { opacity: 1; }
-    }
+    /* REMOVED: .gallery::after { ... } */
 }
 
 /* Responsive Design */
@@ -1349,10 +1330,7 @@ h1, h2, h3, h4, h5, h6 {
         height: 300px;
     }
     
-    .gallery::after {
-        font-size: 0.8rem;
-        padding: 0.4rem 0.8rem;
-    }
+    /* REMOVED: .gallery::after { ... } */
 }
 
 /* Animation Classes */

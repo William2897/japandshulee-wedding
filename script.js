@@ -777,11 +777,11 @@ function init() {
         subtitle.textContent = 'Swipe through our beautiful moments';
         gallery.insertBefore(subtitle, masonryGrid.parentNode);
         
-        // Add scroll hint
-        const hint = document.createElement('p');
-        hint.className = 'gallery-scroll-hint';
-        hint.textContent = '← Swipe to explore more →';
-        masonryGrid.parentNode.appendChild(hint);
+        // // Add scroll hint
+        // const hint = document.createElement('p');
+        // hint.className = 'gallery-scroll-hint';
+        // hint.textContent = '← Swipe to explore more →';
+        // masonryGrid.parentNode.appendChild(hint);
     }
 }
 
