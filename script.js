@@ -16,7 +16,7 @@ const submitBtn = document.getElementById('submitBtn');
 const successMessage = document.getElementById('successMessage');
 const guestDetailsGroup = document.getElementById('guestDetailsGroup');
 const additionalGuestsGroup = document.getElementById('additionalGuestsGroup');
-
+const navBrandLink = document.querySelector('.nav-brand-link');
 // Wedding date - October 17, 2025
 const weddingDate = new Date('2025-10-17T16:00:00');
 
@@ -100,7 +100,7 @@ function initMobileMenu() {
 
 // Enhanced scroll effects with mobile optimizations
 function handleScroll() {
-    const scrolled = window.scrollY > 50;
+    const scrolled = window.scrollY > 100; // Changed threshold for better effect
     nav.classList.toggle('scrolled', scrolled);
     updateActiveNavLink();
     
@@ -529,6 +529,23 @@ function initSmoothScroll() {
     });
 }
 
+// Initialize brand link scroll
+function initBrandLinkScroll() {
+    if (navBrandLink) {
+        navBrandLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+            
+            // Haptic feedback on mobile
+            if (isMobile && navigator.vibrate) {
+                navigator.vibrate(30);
+            }
+        });
+    }
+}
 // Performance optimizations
 function optimizePerformance() {
     // Throttled scroll handler
@@ -709,8 +726,8 @@ function initMobileCountdown() {
     const countdownItems = document.querySelectorAll('.countdown-item');
     countdownItems.forEach((item, index) => {
         item.addEventListener('touchstart', function() {
-            this.style.transform = 'scale(1.1)';
-            this.style.background = 'rgba(255, 255, 255, 0.25)';
+            this.style.transform = 'scale(1.15)';
+            this.style.textShadow = '3px 3px 12px rgba(0, 0, 0, 0.5)';
             
             // Haptic feedback
             if (navigator.vibrate) {
@@ -720,7 +737,7 @@ function initMobileCountdown() {
         
         item.addEventListener('touchend', function() {
             this.style.transform = 'scale(1)';
-            this.style.background = '';
+            this.style.textShadow = '';
         }, { passive: true });
     });
 }
@@ -735,6 +752,7 @@ function init() {
     initFAQAccordion();
     initRSVPForm();
     initSmoothScroll();
+    initBrandLinkScroll();
     initMobileTouchEnhancements();
     initMobileSwipeGallery();
     initResponsiveImages();
@@ -776,12 +794,6 @@ function init() {
         subtitle.className = 'gallery-subtitle';
         subtitle.textContent = 'Swipe through our beautiful moments';
         gallery.insertBefore(subtitle, masonryGrid.parentNode);
-        
-        // // Add scroll hint
-        // const hint = document.createElement('p');
-        // hint.className = 'gallery-scroll-hint';
-        // hint.textContent = '← Swipe to explore more →';
-        // masonryGrid.parentNode.appendChild(hint);
     }
 }
 

@@ -49,21 +49,24 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Navigation */
+/* 1. NAVBAR TRANSPARENCY TRANSITION - Replace existing .nav styles */
 .nav {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    background: rgba(253, 250, 246, 0.95);
-    backdrop-filter: blur(10px);
+    background: rgba(253, 250, 246, 0.1);
+    backdrop-filter: blur(5px);
     z-index: 1000;
-    padding: 15px 0;
-    transition: all 0.3s ease;
+    padding: 20px 0;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .nav.scrolled {
-    background: rgba(253, 250, 246, 0.98);
-    box-shadow: 0 2px 20px rgba(140, 120, 81, 0.1);
+    background: rgba(253, 250, 246, 0.95);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 2px 30px rgba(140, 120, 81, 0.15);
+    padding: 15px 0;
 }
 
 .nav-container {
@@ -116,6 +119,16 @@ h1, h2, h3, h4, h5, h6 {
 .nav-link:hover::after,
 .nav-link.active::after {
     width: 100%;
+}
+
+.nav-brand-link {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+}
+
+.nav-brand-link:hover {
+    color: #a08860;
 }
 
 /* Mobile Menu */
@@ -218,6 +231,19 @@ h1, h2, h3, h4, h5, h6 {
     overflow: hidden;
 }
 
+/* 2. FADING TRANSITION EFFECTS - Add after existing hero styles */
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 150px;
+    background: linear-gradient(to bottom, transparent 0%, rgba(253, 250, 246, 0.3) 30%, rgba(253, 250, 246, 0.8) 70%, rgba(253, 250, 246, 1) 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
 .hero-bg {
     position: absolute;
     top: 0;
@@ -288,55 +314,72 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
+/* 4. INCREASED BANNER FONT SIZES - Replace existing hero text styles */
 .hero-title {
-    font-size: 4.5rem;
-    font-weight: 400;
-    margin-bottom: 1rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    font-size: 6rem;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.4);
+    letter-spacing: 2px;
 }
 
 .hero-subtitle {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-    font-weight: 500;
+    font-size: 2.8rem;
+    margin-bottom: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
 }
 
 .hero-date {
-    font-size: 1.2rem;
+    font-size: 1.6rem;
     margin-bottom: 3rem;
-    opacity: 0.9;
+    opacity: 0.95;
+    font-weight: 300;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
 }
 
 /* Countdown */
+/* 3. STREAMLINED COUNTDOWN - Replace existing countdown styles */
 .countdown {
     display: flex;
-    gap: 2rem;
+    gap: 3rem;
     justify-content: center;
-    margin-top: 2rem;
+    margin-top: 3rem;
 }
 
 .countdown-item {
     text-align: center;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 1.5rem 1rem;
-    border-radius: 10px;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    min-width: 80px;
+    background: none;
+    padding: 0;
+    border-radius: 0;
+    backdrop-filter: none;
+    border: none;
+    min-width: auto;
+    transition: transform 0.3s ease;
+}
+
+.countdown-item:hover {
+    transform: scale(1.1);
 }
 
 .countdown-number {
     display: block;
-    font-size: 2rem;
-    font-weight: 600;
+    font-size: 4rem;
+    font-weight: 300;
     font-family: 'Playfair Display', serif;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+    margin-bottom: 0.5rem;
 }
 
 .countdown-label {
-    font-size: 0.9rem;
+    font-size: 1rem;
     opacity: 0.9;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+    font-weight: 400;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
 }
 
 /* Scroll Indicator */
@@ -435,22 +478,239 @@ h1, h2, h3, h4, h5, h6 {
     display: none;
 }
 
+/* Bride & Groom Section */
+.couple {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #fdfaf6 0%, #f8f4ee 100%);
+}
+
+.couple-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 4rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* .couple-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(140, 120, 81, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+} */
+
+.couple-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 30px 60px rgba(140, 120, 81, 0.25);
+}
+
+/* 6. CIRCULAR COUPLE PHOTOS - Replace existing couple styles */
+.couple-image {
+    height: 350px;
+    width: 350px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 2rem auto;
+    border: 6px solid rgba(140, 120, 81, 0.2);
+    transition: all 0.4s ease;
+    position: relative;
+}
+
+.couple-image::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: -6px;
+    right: -6px;
+    bottom: -6px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #8c7851, #a08860, #8c7851);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.couple-card:hover .couple-image::before {
+    opacity: 1;
+}
+
+.couple-card:hover .couple-image {
+    transform: scale(1.05);
+    border-color: transparent;
+}
+
+.couple-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.couple-card:hover .couple-photo {
+    transform: scale(1.1);
+}
+
+.couple-info {
+    padding: 1rem 2rem 2rem 2rem;
+    text-align: center;
+}
+
+.couple-name {
+    font-size: 2rem;
+    color: #8c7851;
+    margin-bottom: 0.5rem;
+}
+
+.couple-title {
+    font-size: 1.2rem;
+    color: #8c7851;
+    font-style: italic;
+    margin-bottom: 1rem;
+    opacity: 0.8;
+}
+
+.couple-bio {
+    line-height: 1.6;
+    color: #5d5149;
+}
+
+/* Our Story Section */
+.story {
+    padding: 100px 0;
+    background: white;
+    position: relative;
+}
+
+.story::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background: linear-gradient(to bottom, transparent, #fdfaf6);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.story-content {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 4rem;
+    align-items: stretch;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.story-text {
+    padding-right: 2rem;
+    z-index: 1;
+}
+
+.story-chapter {
+    font-size: 1.5rem;
+    color: #8c7851;
+    margin: 2rem 0 1rem 0;
+    font-weight: 500;
+}
+
+.story-chapter:first-child {
+    margin-top: 0;
+}
+
+.story-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    color: #5d5149;
+}
+
+.story-image {
+    overflow: hidden;
+}
+
+.story-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.story-image:hover .story-photo {
+    transform: scale(1.05);
+}
+
+/* Mobile Styles for New Sections */
+@media (max-width: 768px) {
+    .couple-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 0 1rem;
+    }
+    
+    .couple-card {
+        margin: 0;
+    }
+    
+    .couple-info {
+        padding: 1.5rem;
+    }
+    
+    .couple-name {
+        font-size: 1.8rem;
+    }
+    
+    .story-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 0 1rem;
+    }
+    
+    .story-text {
+        padding-right: 0;
+        order: 2;
+    }
+    
+    .story-image {
+        order: 1;
+        height: 400px;
+        border-radius: 20px;
+    }
+    
+    .story-photo {
+        height: 100%;
+    }
+    
+    .story-chapter {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .couple,
+    .story {
+        padding: 60px 0;
+    }
+    
+    .couple-info {
+        padding: 1rem;
+    }
+    
+    .couple-name {
+        font-size: 1.6rem;
+    }
+    
+    .story-chapter {
+        font-size: 1.2rem;
+    }
+}
+
 /* Gallery Section - Horizontal Scrolling on Mobile */
 .gallery {
     padding: 100px 0;
     background: linear-gradient(135deg, #fdfaf6 0%, #f8f4ee 100%);
     position: relative;
-}
-
-.gallery::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 100px;
-    background: linear-gradient(to bottom, rgba(253, 250, 246, 0), rgba(253, 250, 246, 1));
-    z-index: 1;
 }
 
 /* Desktop Gallery - Masonry Grid */
@@ -682,52 +942,85 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Timeline */
+/* 5. ELEGANT ORDER OF EVENTS - Replace existing timeline styles */
 .timeline {
-    background: white;
-    padding: 3rem;
-    border-radius: 20px;
-    box-shadow: 0 20px 40px rgba(140, 120, 81, 0.1);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 244, 238, 0.9) 100%);
+    padding: 4rem;
+    border-radius: 25px;
+    box-shadow: 0 25px 50px rgba(140, 120, 81, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(140, 120, 81, 0.1);
 }
 
 .timeline-title {
     text-align: center;
-    font-size: 2rem;
-    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #8c7851;
+    font-weight: 300;
+    letter-spacing: 1px;
 }
 
 .timeline-item {
     display: flex;
     align-items: center;
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
     position: relative;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+}
+
+.timeline-item:hover {
+    transform: translateX(10px);
+    box-shadow: 0 15px 30px rgba(140, 120, 81, 0.2);
+    border-left-color: #8c7851;
+    background: rgba(255, 255, 255, 0.8);
 }
 
 .timeline-item:not(:last-child)::after {
     content: '';
     position: absolute;
-    left: 80px;
-    bottom: -15px;
+    left: 50%;
+    bottom: -20px;
+    transform: translateX(-50%);
     width: 2px;
-    height: 15px;
-    background: #8c7851;
-    opacity: 0.3;
+    height: 20px;
+    background: linear-gradient(to bottom, #8c7851, transparent);
+    opacity: 0.4;
 }
 
 .timeline-time {
-    flex: 0 0 120px;
+    flex: 0 0 140px;
     font-weight: 600;
     color: #8c7851;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(140, 120, 81, 0.1), rgba(140, 120, 81, 0.05));
+    padding: 1rem;
+    border-radius: 15px;
+    margin-right: 2rem;
+}
+
+.timeline-event {
+    flex: 1;
 }
 
 .timeline-event h4 {
-    font-size: 1.3rem;
-    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+    margin-bottom: 0.8rem;
+    color: #8c7851;
+    font-weight: 500;
 }
 
 .timeline-event p {
     opacity: 0.8;
     font-style: italic;
+    font-size: 1.1rem;
+    color: #5d5149;
 }
 
 /* Venue Map */
@@ -869,7 +1162,7 @@ h1, h2, h3, h4, h5, h6 {
 .fade-in-section {
     opacity: 0;
     transform: translateY(50px);
-    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .fade-in-section.visible {
@@ -880,7 +1173,7 @@ h1, h2, h3, h4, h5, h6 {
 .fade-in-item {
     opacity: 0;
     transform: translateY(30px);
-    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .fade-in-item.visible {
@@ -1098,35 +1391,19 @@ h1, h2, h3, h4, h5, h6 {
         height: 3px;
     }
     
-    /* Enhanced mobile countdown */
+    /* Mobile countdown adjustments */
     .countdown {
-        gap: 1rem;
-        margin-top: 1.5rem;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    
-    .countdown-item {
-        padding: 1rem 0.8rem;
-        min-width: 70px;
-        backdrop-filter: blur(15px);
-        background: rgba(255, 255, 255, 0.15);
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        transition: all 0.3s ease;
-    }
-    
-    .countdown-item:hover {
-        transform: scale(1.05);
-        background: rgba(255, 255, 255, 0.2);
+        gap: 2rem;
+        margin-top: 2rem;
     }
     
     .countdown-number {
-        font-size: 1.8rem;
+        font-size: 2.5rem;
     }
     
     .countdown-label {
-        font-size: 0.8rem;
-        letter-spacing: 0.5px;
+        font-size: 0.9rem;
+        letter-spacing: 1px;
     }
     
     /* Mobile parallax sections */
@@ -1184,31 +1461,33 @@ h1, h2, h3, h4, h5, h6 {
         border-radius: 12px;
     }
     
-    /* Mobile timeline improvements */
+    /* Mobile timeline */
+    .timeline {
+        padding: 2rem;
+    }
+    
     .timeline-item {
         flex-direction: column;
-        align-items: flex-start;
-        text-align: left;
-        padding: 1.5rem;
-        background: rgba(140, 120, 81, 0.05);
-        border-radius: 15px;
-        margin-bottom: 1.5rem;
-        border-left: 4px solid #8c7851;
+        align-items: center;
+        text-align: center;
+        padding: 2rem 1.5rem;
     }
     
     .timeline-time {
         flex: none;
-        margin-bottom: 0.5rem;
+        margin-right: 0;
+        margin-bottom: 1rem;
         font-size: 1.2rem;
-        background: #8c7851;
-        color: white;
-        padding: 0.5rem 1rem;
-        border-radius: 20px;
-        display: inline-block;
+    }
+    
+    .timeline-item:hover {
+        transform: translateY(-5px);
     }
     
     .timeline-item:not(:last-child)::after {
-        display: none;
+        left: 50%;
+        bottom: -15px;
+        height: 15px;
     }
     
     /* Mobile section spacing */
@@ -1220,7 +1499,6 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     .invitation-text,
-    .timeline,
     .venue-map,
     .dress-code,
     .rsvp-form {
@@ -1232,8 +1510,7 @@ h1, h2, h3, h4, h5, h6 {
     .gallery {
         position: relative;
     }
-    
-    /* REMOVED: .gallery::after { ... } */
+
 }
 
 /* Responsive Design */
@@ -1266,13 +1543,19 @@ h1, h2, h3, h4, h5, h6 {
         display: none;
     }
     
+    /* Mobile hero text adjustments */
     .hero-title {
-        font-size: 3rem;
+        font-size: 3.5rem;
         line-height: 1.1;
+        margin-bottom: 1rem;
     }
     
     .hero-subtitle {
-        font-size: 1.5rem;
+        font-size: 2rem;
+    }
+    
+    .hero-date {
+        font-size: 1.3rem;
     }
     
     .section-title {
@@ -1282,6 +1565,13 @@ h1, h2, h3, h4, h5, h6 {
     
     .names {
         font-size: 2rem;
+    }
+    
+    /* Mobile couple photos */
+    .couple-image {
+        height: 280px;
+        width: 280px;
+        margin-bottom: 1.5rem;
     }
 }
 
@@ -1295,29 +1585,26 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     .hero-title {
-        font-size: 2.5rem;
+        font-size: 2.8rem;
     }
     
     .hero-subtitle {
-        font-size: 1.3rem;
+        font-size: 1.6rem;
     }
     
     .section-title {
         font-size: 2rem;
     }
     
-    .countdown-item {
-        flex: 1;
-        min-width: 50px;
-        padding: 0.8rem 0.4rem;
+    .countdown {
+        gap: 1.5rem;
     }
     
     .countdown-number {
-        font-size: 1.5rem;
+        font-size: 2rem;
     }
     
     .invitation-text,
-    .timeline,
     .venue-map,
     .dress-code,
     .rsvp-form {
@@ -1325,12 +1612,20 @@ h1, h2, h3, h4, h5, h6 {
         margin: 0 5px;
     }
     
+    .timeline {
+        padding: 1.5rem;
+    }
+    
     .masonry-item {
         flex: 0 0 250px;
         height: 300px;
     }
     
-    /* REMOVED: .gallery::after { ... } */
+    .couple-image {
+        height: 240px;
+        width: 240px;
+    }
+    
 }
 
 /* Animation Classes */
