@@ -138,7 +138,10 @@ function handleDesktopParallax() {
 }
 
 // Enhanced mobile parallax effects
+// REPLACE the old handleMobileParallax function with this one
+
 function handleMobileParallax() {
+    // Handle hero image parallax first
     const heroImage = document.querySelector('.hero-image');
     if (heroImage) {
         const scrollPercent = Math.min(window.scrollY / window.innerHeight, 1);
@@ -147,24 +150,29 @@ function handleMobileParallax() {
         heroImage.style.transform = `scale(${scaleValue}) translateY(${translateValue}px)`;
     }
     
-    // Mobile parallax sections with subtle movement
+    // Handle the parallax sections
     const parallaxSections = document.querySelectorAll('.parallax-section');
-    parallaxSections.forEach((section, index) => {
+    parallaxSections.forEach(section => {
         const rect = section.getBoundingClientRect();
         const windowHeight = window.innerHeight;
-        
+
+        // Check if the section is in the viewport
         if (rect.top < windowHeight && rect.bottom >= 0) {
-            const progress = (windowHeight - rect.top) / (windowHeight + rect.height);
-            const clampedProgress = Math.max(0, Math.min(1, progress));
             
-            // Different movement for each section
-            const moveY = (index % 2 === 0 ? -10 : 10) * clampedProgress;
-            const scale = 1.05 + (clampedProgress * 0.05);
+            // Calculate how far the top of the section is from the bottom of the viewport.
+            const distance = windowHeight - rect.top;
             
-            const beforeElement = section.querySelector('::before') || section;
-            if (section.style) {
-                section.style.transform = `translateY(${moveY}px)`;
-            }
+            // Adjust this speed for more or less parallax effect.
+            // A smaller number (e.g., 0.2) makes the effect more pronounced.
+            const parallaxSpeed = 0.25;
+            
+            // We move the background UP as the user scrolls DOWN.
+            // A negative Y value moves the background up.
+            const yPos = -(distance * parallaxSpeed);
+
+            // Apply the new position using the full 'background-position' property
+            // for maximum browser compatibility.
+            section.style.backgroundPosition = `center ${yPos}px`;
         }
     });
 }

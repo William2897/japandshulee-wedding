@@ -507,30 +507,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Mobile Parallax */
-@media (max-width: 768px) {
-    .parallax-section {
-        background-attachment: scroll; /* Keep scroll for actual background image */
-    }
-    
-    .parallax-section::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: inherit; /* Inherit background from parent to apply animation */
-        background-size: cover;
-        background-position: center;
-        animation: mobileParallaxFloat 8s ease-in-out infinite alternate;
-        z-index: -1;
-    }
-    
-    @keyframes mobileParallaxFloat {
-        0% { transform: scale(1.05) translateY(0px); }
-        100% { transform: scale(1.1) translateY(-10px); }
-    }
-}
 
 .parallax-1 {
     background-image: linear-gradient(rgba(140, 120, 81, 0.7), rgba(93, 81, 73, 0.7)),
@@ -931,6 +907,7 @@ h1, h2, h3, h4, h5, h6 {
 /* ADD THIS NEW RULE */
 .details-continued {
     padding-top: 0;
+    padding-bottom: 0 ;
 }
 
 .invitation-text {
@@ -1582,9 +1559,14 @@ h1, h2, h3, h4, h5, h6 {
     
     /* Mobile parallax sections */
     .parallax-section {
-        height: 50vh;
-        position: relative;
-    }
+    /* Set a clear starting position for the background */
+    background-position: 50% 50%; /* or 'center center' */
+    
+    /* Force the image to be 160% of the container's height.
+       This is the KEY to the fix: it ensures there is extra
+       image area to move for the parallax effect. */
+    background-size: auto 160%;
+}
     
     .parallax-section::after {
         content: '';
