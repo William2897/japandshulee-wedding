@@ -783,7 +783,9 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
-/* Mobile Gallery - Horizontal Scroll */
+/* ======================================================================= */
+/* START OF CHANGES: Mobile Gallery - Horizontal Scroll with Aspect Ratio */
+/* ======================================================================= */
 @media (max-width: 768px) {
     .gallery-subtitle {
         text-align: center;
@@ -802,6 +804,9 @@ h1, h2, h3, h4, h5, h6 {
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
         -ms-overflow-style: none;
+        
+        /* CHANGE 1: Set a consistent height for the scrollable row */
+        height: 45vh; 
     }
     
     .masonry-grid::-webkit-scrollbar {
@@ -809,13 +814,21 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     .masonry-item {
-        flex: 0 0 280px;
-        height: 350px;
+        /* CHANGE 2: Let width be automatic and remove fixed height */
+        flex: 0 0 auto; /* Let the content (image) determine the width */
+        height: 100%;   /* Make the item fill the height of the grid */
         scroll-snap-align: center;
         position: relative;
         overflow: hidden;
     }
     
+    /* ADDED: New rule to make images maintain aspect ratio */
+    .gallery-image {
+        height: 100%; /* Fill the container's height */
+        width: auto;  /* Allow width to adjust automatically */
+        object-fit: cover; /* Ensures the image covers the height */
+    }
+
     .masonry-item:last-child {
         margin-right: 20px;
     }
@@ -835,6 +848,10 @@ h1, h2, h3, h4, h5, h6 {
         50% { opacity: 0.4; }
     }
 }
+/* ===================================================================== */
+/* END OF CHANGES: Mobile Gallery - Horizontal Scroll with Aspect Ratio */
+/* ===================================================================== */
+
 
 .masonry-item {
     border-radius: 15px;
@@ -1772,9 +1789,10 @@ h1, h2, h3, h4, h5, h6 {
         padding: 1.5rem;
     }
     
+    /* This rule was moved into the primary mobile media query for the fix. 
+       This is just a fallback for very small screens. */
     .masonry-item {
-        flex: 0 0 250px;
-        height: 300px;
+        flex: 0 0 auto;
     }
     
     .couple-image {
