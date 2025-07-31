@@ -757,7 +757,7 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
-/* Gallery Section - Horizontal Scrolling on Mobile */
+/* Gallery Section */
 .gallery {
     padding: 100px 0;
     background: linear-gradient(135deg, #fdfaf6 0%, #f8f4ee 100%);
@@ -783,74 +783,37 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
-/* ======================================================================= */
-/* START OF CHANGES: Mobile Gallery - Horizontal Scroll with Aspect Ratio */
-/* ======================================================================= */
+
+/* ================================================================= */
+/* START OF CHANGES: Mobile Gallery - True Masonry with column-count */
+/* ================================================================= */
 @media (max-width: 768px) {
-    .gallery-subtitle {
-        text-align: center;
-        font-size: 1.2rem;
-        margin-bottom: 2rem;
-        color: #8c7851;
-        font-style: italic;
-    }
-    
     .masonry-grid {
-        display: flex;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        padding: 2rem 0 2rem 20px;
-        gap: 1.5rem;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-        
-        /* CHANGE 1: Set a consistent height for the scrollable row */
-        height: 45vh; 
-    }
-    
-    .masonry-grid::-webkit-scrollbar {
-        display: none;
-    }
-    
-    .masonry-item {
-        /* CHANGE 2: Let width be automatic and remove fixed height */
-        flex: 0 0 auto; /* Let the content (image) determine the width */
-        height: 100%;   /* Make the item fill the height of the grid */
-        scroll-snap-align: center;
-        position: relative;
-        overflow: hidden;
-    }
-    
-    /* ADDED: New rule to make images maintain aspect ratio */
-    .gallery-image {
-        height: 100%; /* Fill the container's height */
-        width: auto;  /* Allow width to adjust automatically */
-        object-fit: cover; /* Ensures the image covers the height */
+        column-count: 2;     /* Create two vertical columns */
+        column-gap: 1rem;    /* Space between columns */
     }
 
-    .masonry-item:last-child {
-        margin-right: 20px;
+    .masonry-item {
+        margin-bottom: 1rem; /* Space below each image */
+        break-inside: avoid; /* Prevent images from breaking across columns */
+    }
+
+    /* The .tall and .wide classes have no effect in a column layout, so their specific grid rules are removed for mobile. */
+
+    /* Remove hover effects on mobile and use active state for touch feedback */
+    .masonry-item:hover {
+        transform: none;
+        box-shadow: 0 20px 40px rgba(140, 120, 81, 0.15);
     }
     
-    .gallery-scroll-hint {
-        text-align: center;
-        margin-top: 1rem;
-        color: #8c7851;
-        font-style: italic;
-        font-size: 0.9rem;
-        opacity: 0.8;
-        animation: pulse 2s infinite;
-    }
-    
-    @keyframes pulse {
-        0%, 100% { opacity: 0.8; }
-        50% { opacity: 0.4; }
+    .masonry-item:active {
+        transform: scale(0.98);
+        transition: transform 0.1s ease;
     }
 }
-/* ===================================================================== */
-/* END OF CHANGES: Mobile Gallery - Horizontal Scroll with Aspect Ratio */
-/* ===================================================================== */
+/* =============================================================== */
+/* END OF CHANGES: Mobile Gallery - True Masonry with column-count */
+/* =============================================================== */
 
 
 .masonry-item {
@@ -860,6 +823,9 @@ h1, h2, h3, h4, h5, h6 {
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     cursor: pointer;
     position: relative;
+    /* This ensures it's a block-level element for the column layout */
+    display: inline-block;
+    width: 100%;
 }
 
 .masonry-item:hover {
@@ -890,23 +856,12 @@ h1, h2, h3, h4, h5, h6 {
     height: 100%;
     object-fit: cover;
     transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* This helps ensure the image is displayed correctly */
+    display: block;
 }
 
 .masonry-item:hover .gallery-image {
     transform: scale(1.1);
-}
-
-/* Mobile Gallery Enhancements */
-@media (max-width: 768px) {
-    .masonry-item:hover {
-        transform: scale(1.05);
-        box-shadow: 0 25px 50px rgba(140, 120, 81, 0.25);
-    }
-    
-    .masonry-item:active {
-        transform: scale(0.98);
-        transition: transform 0.1s ease;
-    }
 }
 
 /* Details Section */
@@ -999,27 +954,6 @@ h1, h2, h3, h4, h5, h6 {
     font-style: italic;
     margin-bottom: 1.5rem; /* Added margin */
 }
-
-/* REMOVE these old styles */
-/* 
-.dress-code-image {
-    margin: 1.5rem 0;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 10px 20px rgba(140, 120, 81, 0.15);
-}
-
-.dress-example {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-.dress-code:hover .dress-example {
-    transform: scale(1.05);
-}
-*/
 
 /* ========== ADD THESE NEW DRESS CODE STYLES ========== */
 .dress-code-tabs {
@@ -1787,12 +1721,6 @@ h1, h2, h3, h4, h5, h6 {
     
     .timeline {
         padding: 1.5rem;
-    }
-    
-    /* This rule was moved into the primary mobile media query for the fix. 
-       This is just a fallback for very small screens. */
-    .masonry-item {
-        flex: 0 0 auto;
     }
     
     .couple-image {
