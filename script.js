@@ -247,31 +247,8 @@ function initMasonryGallery() {
     }
 }
 
-// Mobile gallery with horizontal scroll enhancements
+// Mobile gallery with vertical layout enhancements
 function initMobileGallery(galleryItems) {
-    // Add scroll snapping and momentum
-    if (masonryGrid) {
-        masonryGrid.style.scrollSnapType = 'x mandatory';
-        masonryGrid.style.webkitOverflowScrolling = 'touch';
-        
-        // Add scroll indicators
-        let isScrolling = false;
-        masonryGrid.addEventListener('scroll', () => {
-            if (!isScrolling) {
-                isScrolling = true;
-                // Hide scroll hint when user starts scrolling
-                const hint = document.querySelector('.gallery::after');
-                if (hint) {
-                    hint.style.opacity = '0';
-                }
-                
-                setTimeout(() => {
-                    isScrolling = false;
-                }, 100);
-            }
-        });
-    }
-    
     // Enhanced touch interactions for gallery items
     galleryItems.forEach((item, index) => {
         item.addEventListener('touchstart', function(e) {
@@ -693,50 +670,8 @@ function initMobileTouchEnhancements() {
     document.head.appendChild(style);
 }
 
-// Enhanced mobile gallery with swipe detection
-function initMobileSwipeGallery() {
-    if (!isMobile || !masonryGrid) return;
-    
-    let startX = 0;
-    let scrollLeft = 0;
-    let isDown = false;
-    
-    masonryGrid.addEventListener('touchstart', (e) => {
-        isDown = true;
-        startX = e.touches[0].pageX - masonryGrid.offsetLeft;
-        scrollLeft = masonryGrid.scrollLeft;
-    }, { passive: true });
-    
-    masonryGrid.addEventListener('touchmove', (e) => {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = e.touches[0].pageX - masonryGrid.offsetLeft;
-        const walk = (x - startX) * 2;
-        masonryGrid.scrollLeft = scrollLeft - walk;
-    });
-    
-    masonryGrid.addEventListener('touchend', () => {
-        isDown = false;
-    }, { passive: true });
-    
-    // Snap to nearest item on scroll end
-    let scrollTimeout;
-    masonryGrid.addEventListener('scroll', () => {
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(() => {
-            const items = masonryGrid.children;
-            const scrollPos = masonryGrid.scrollLeft;
-            const itemWidth = items[0].offsetWidth + 24; // width + gap
-            const targetIndex = Math.round(scrollPos / itemWidth);
-            const targetScroll = targetIndex * itemWidth;
-            
-            masonryGrid.scrollTo({
-                left: targetScroll,
-                behavior: 'smooth'
-            });
-        }, 150);
-    }, { passive: true });
-}
+// DELETED: The initMobileSwipeGallery() function was here.
+// It was causing the scroll-hijacking issue and is no longer needed.
 
 // Responsive image loading for mobile
 function initResponsiveImages() {
@@ -834,9 +769,9 @@ function init() {
     initRSVPForm();
     initSmoothScroll();
     initBrandLinkScroll();
-    initDressCodeTabs()
+    initDressCodeTabs();
     initMobileTouchEnhancements();
-    initMobileSwipeGallery();
+    // DELETED: initMobileSwipeGallery(); // This call was causing the scroll issue.
     initResponsiveImages();
     initMobileCountdown();
     
