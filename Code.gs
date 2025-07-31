@@ -1,5 +1,5 @@
 /**
- * Google Apps Script for Wedding RSVP Form
+ * Google Apps Script for Wedding RSVP Form - CORS FIXED VERSION
  * This script receives RSVP form submissions and stores them in Google Sheets
  * 
  * Setup Instructions:
@@ -11,67 +11,57 @@
  * 6. Copy the deployment URL and update the scriptURL in script.js
  */
 
-// Replace with your Google Sheets ID
-const SHEET_ID = 'https://docs.google.com/spreadsheets/d/1npaiupaTYK9_z5buk3YgCGKrLkcjoEeGj4Zc28Xq4l0/edit?gid=0#gid=0;
+// Replace with your Google Sheets ID (just the ID, not the full URL)
+const SHEET_ID = '1npaiupaTYK9_z5buk3YgCGKrLkcjoEeGj4Zc28Xq4l0';
 const SHEET_NAME = 'RSVP Responses';
+
+/**
+ * Handle GET requests - This handles CORS preflight
+ */
+function doGet(e) {
+  // Return JSON response indicating the endpoint is working
+  return ContentService
+    .createTextOutput(JSON.stringify({
+      status: 'success',
+      message: 'RSVP endpoint is working',
+      timestamp: new Date().toISOString()
+    }))
+    .setMimeType(ContentService.MimeType.JSON);
+}
 
 /**
  * Handle POST requests from the RSVP form
  */
 function doPost(e) {
   try {
-    // Parse the JSON data from the request
-    const data = JSON.parse(e.postData.contents);
-    
-    // Log the received data for debugging
+    // When using FormData, the data is in the 'parameter' property.
+    // The key 'postData' must match what we used in script.js's formData.append()
+    const data = JSON.parse(e.parameter.postData);
     console.log('Received RSVP data:', data);
-    
-    // Store the RSVP data in Google Sheets
+
     const result = storeRSVPData(data);
-    
-    // Return success response
+
+    // Return a success response
     return ContentService
       .createTextOutput(JSON.stringify({
         status: 'success',
         message: 'RSVP received successfully',
         result: result
       }))
-      .setMimeType(ContentService.MimeType.JSON)
-      .setHeaders({
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
-        'Access-Control-Allow-Headers': 'Content-Type'
-      });
-      
+      .setMimeType(ContentService.MimeType.JSON);
+
   } catch (error) {
     console.error('Error processing RSVP:', error);
-    
+
+    // Return an error response
     return ContentService
       .createTextOutput(JSON.stringify({
         status: 'error',
         message: 'Failed to process RSVP',
         error: error.toString()
       }))
-      .setMimeType(ContentService.MimeType.JSON)
-      .setHeaders({
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
-        'Access-Control-Allow-Headers': 'Content-Type'
-      });
+      .setMimeType(ContentService.MimeType.JSON);
   }
-}
-
-/**
- * Handle OPTIONS requests for CORS preflight
- */
-function doOptions(e) {
-  return ContentService
-    .createTextOutput('')
-    .setHeaders({
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type'
-    });
 }
 
 /**
@@ -94,7 +84,7 @@ function storeRSVPData(data) {
       data.contactNumber || '',
       data.attendance || '',
       data.guestCount || '1',
-      additionalGuestsText,
+      //additionalGuestsText,
       data.message || ''
     ];
     
@@ -142,11 +132,16 @@ function getOrCreateSheet() {
         'Contact Number',
         'Attendance',
         'Guest Count',
-        'Additional Guests',
         'Message',
         'Guest 2',
         'Guest 3',
-        'Guest 4'
+        'Guest 4',
+        'Guest 5',
+        'Guest 6',
+        'Guest 7',
+        'Guest 8',
+        'Guest 9',
+        'Guest 10'
       ];
       
       sheet.getRange(1, 1, 1, headers.length).setValues([headers]);
@@ -163,11 +158,16 @@ function getOrCreateSheet() {
       sheet.setColumnWidth(3, 150); // Contact Number
       sheet.setColumnWidth(4, 120); // Attendance
       sheet.setColumnWidth(5, 100); // Guest Count
-      sheet.setColumnWidth(6, 250); // Additional Guests
-      sheet.setColumnWidth(7, 300); // Message
-      sheet.setColumnWidth(8, 200); // Guest 2
-      sheet.setColumnWidth(9, 200); // Guest 3
-      sheet.setColumnWidth(10, 200); // Guest 4
+      sheet.setColumnWidth(6, 300); // Message
+      sheet.setColumnWidth(7, 200); // Guest 2
+      sheet.setColumnWidth(8, 200); // Guest 3
+      sheet.setColumnWidth(9, 200); // Guest 4
+      sheet.setColumnWidth(10, 200); // Guest 5
+      sheet.setColumnWidth(11, 200); // Guest 6
+      sheet.setColumnWidth(12, 200); // Guest 7
+      sheet.setColumnWidth(13, 200); // Guest 8
+      sheet.setColumnWidth(14, 200); // Guest 9
+      sheet.setColumnWidth(15, 200); // Guest 10
     }
     
     return sheet;
@@ -184,11 +184,11 @@ function getOrCreateSheet() {
  */
 function sendEmailNotification(data) {
   try {
-    const emailAddress = 'your-email@example.com'; // Replace with your email
+    const emailAddress = 'williamh.otieno@gmail.com'; // Replace with your email
     const subject = 'New Wedding RSVP Received';
     
     const emailBody = `
-      A new RSVP has been received for Sarah & James's wedding:
+      A new RSVP has been received for Jap & Shu Lee's wedding:
       
       Name: ${data.fullName}
       Contact: ${data.contactNumber}

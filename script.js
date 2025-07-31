@@ -425,37 +425,73 @@ function initRSVPForm() {
     
     rsvpForm.addEventListener('submit', async function(e) {
         e.preventDefault();
-        
+
         submitBtn.disabled = true;
         const btnText = submitBtn.querySelector('.btn-text');
         const btnLoading = submitBtn.querySelector('.btn-loading');
         btnText.style.display = 'none';
         btnLoading.style.display = 'inline';
 
-        // Enhanced mobile feedback
         if (isMobile && navigator.vibrate) {
             navigator.vibrate([50, 100, 50]);
         }
 
         const formData = new FormData(rsvpForm);
-        const data = Object.fromEntries(formData.entries());
-        
-        // Client-side validation with better mobile UX
-        if (!data.fullName || !data.contactNumber || !data.attendance) {
+        const rawData = Object.fromEntries(formData.entries());
+
+        if (!rawData.fullName || !rawData.contactNumber || !rawData.attendance) {
             showMobileAlert('Please fill out all required fields.');
             resetSubmitButton();
             return;
         }
 
+        // Construct the data object in the format the backend expects
+        const submissionData = {
+            fullName: rawData.fullName,
+            contactNumber: rawData.contactNumber,
+            attendance: rawData.attendance,
+            guestCount: rawData.guestCount,
+            message: rawData.message,
+            submittedAt: new Date().toLocaleString(),
+            additionalGuests: []
+        };
+
+        // Collect additional guest names into the array
+        if (rawData.guestCount > 1) {
+            for (let i = 2; i <= rawData.guestCount; i++) {
+                if (rawData[`guest${i}`]) {
+                    submissionData.additionalGuests.push(rawData[`guest${i}`]);
+                }
+            }
+        }
+
         try {
             // IMPORTANT: Replace with your Google Apps Script URL
-            const scriptURL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbxG4X1w7HyZW07DhS0eXy754aKrYSXxM5m-OIEYMEufPlRF_blBBjt_NG2t4ToqxxFD/exec';
             
-            // Simulating API call
-            console.log("Submitting data:", data);
-            await new Promise(resolve => setTimeout(resolve, 1500));
-            
-            // Success feedback
+            // The backend expects the data as a JSON string in a 'postData' parameter
+            const postableFormData = new FormData();
+            postableFormData.append('postData', JSON.stringify(submissionData));
+
+            const response = await fetch(scriptURL, {
+                method: 'POST',
+                body: postableFormData
+            });
+
+            if (!response.ok) {
+                let errorMsg = `HTTP error! status: ${response.status}`;
+                try {
+                    const errorResult = await response.json();
+                    errorMsg += ` - ${errorResult.message || errorResult.error}`;
+                } catch (jsonError) {
+                    errorMsg += ` - ${response.statusText}`;
+                }
+                throw new Error(errorMsg);
+            }
+
+            const result = await response.json();
+            console.log("Success:", result);
+
             if (isMobile && navigator.vibrate) {
                 navigator.vibrate([100, 50, 100, 50, 100]);
             }
