@@ -778,6 +778,43 @@ function initMobileCountdown() {
     });
 }
 
+// Dress Code Tabs Functionality
+function initDressCodeTabs() {
+    const tabs = document.querySelectorAll('.dress-code-tab');
+    const galleries = document.querySelectorAll('.dress-code-grid');
+
+    if (!tabs.length || !galleries.length) return;
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            // Don't do anything if the tab is already active
+            if (tab.classList.contains('active')) {
+                return;
+            }
+
+            // Remove active state from all tabs and galleries
+            tabs.forEach(t => t.classList.remove('active'));
+            galleries.forEach(g => g.classList.remove('active'));
+
+            // Add active state to the clicked tab
+            tab.classList.add('active');
+
+            // Get the target gallery
+            const targetId = `dressCode${tab.dataset.tab}`;
+            const targetGallery = document.getElementById(targetId);
+
+            if (targetGallery) {
+                targetGallery.classList.add('active');
+            }
+            
+            // Haptic feedback on mobile
+            if (isMobile && navigator.vibrate) {
+                navigator.vibrate(30);
+            }
+        });
+    });
+}
+
 // Initialize all functionality
 function init() {
     updateCountdown();
@@ -789,6 +826,7 @@ function init() {
     initRSVPForm();
     initSmoothScroll();
     initBrandLinkScroll();
+    initDressCodeTabs()
     initMobileTouchEnhancements();
     initMobileSwipeGallery();
     initResponsiveImages();

@@ -206,10 +206,36 @@
 
                 <div class="dress-code fade-in-item">
                     <h3 class="dress-code-title">Dress Code</h3>
-                    <div class="dress-code-image">
-                        <img src="https://images.pexels.com/photos/8849295/pexels-photo-8849295.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Colorful traditional attire example" class="dress-example">
-                    </div>
                     <p class="dress-code-text">Traditional, Colourful and Modest</p>
+                    
+                    <!-- Dress Code Tabs -->
+                    <div class="dress-code-tabs">
+                        <button class="dress-code-tab active" data-tab="Her">For Her</button>
+                        <button class="dress-code-tab" data-tab="Him">For Him</button>
+                    </div>
+
+                    <!-- Dress Code Galleries -->
+                    <div class="dress-code-gallery-container">
+                        <!-- For Her Gallery (Initially visible) -->
+                        <div id="dressCodeHer" class="dress-code-grid active">
+                            <div class="dress-item"><img src="images/dresscode-her-1.jpg" alt="Saree example"></div>
+                            <div class="dress-item"><img src="images/dresscode-her-2.jpg" alt="Kebaya example"></div>
+                            <div class="dress-item"><img src="images/dresscode-her-3.jpg" alt="Hmong dress example"></div>
+                            <div class="dress-item"><img src="images/dresscode-her-4.jpg" alt="Lehenga example"></div>
+                            <div class="dress-item"><img src="images/dresscode-her-5.jpg" alt="Cheongsam example"></div>
+                            <div class="dress-item"><img src="images/dresscode-her-6.jpg" alt="Anarkali suit example"></div>
+                        </div>
+
+                        <!-- For Him Gallery (Initially hidden) -->
+                        <div id="dressCodeHim" class="dress-code-grid">
+                            <div class="dress-item"><img src="images/dresscode-him-1.jpg" alt="Smart casual blazer example"></div>
+                            <div class="dress-item"><img src="images/dresscode-him-2.jpg" alt="Kurta example"></div>
+                            <div class="dress-item"><img src="images/dresscode-him-3.jpg" alt="Batik shirt example"></div>
+                            <div class="dress-item"><img src="images/dresscode-him-4.jpg" alt="Male cheongsam top example"></div>
+                            <div class="dress-item"><img src="images/dresscode-him-5.jpg" alt="Sherwani example"></div>
+                            <div class="dress-item"><img src="images/dresscode-him-6.jpg" alt="Nehru suit example"></div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="timeline fade-in-item" id="timeline">
@@ -243,34 +269,39 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
 
-                <!-- Parallax Section 2 -->
-                <section class="parallax-section parallax-2">
-                    <div class="parallax-content">
-                        <h3 class="parallax-text">"Two souls with but a single thought, two hearts that beat as one."</h3>
-                    </div>
-                </section>
+    <!-- Parallax Section 2 (NOW CORRECTLY PLACED AND FULL-WIDTH) -->
+    <section class="parallax-section parallax-2">
+        <div class="parallax-content">
+            <h3 class="parallax-text">"Two souls with but a single thought, two hearts that beat as one."</h3>
+        </div>
+    </section>
 
-                <div class="venue-map fade-in-item">
-                    <h3 class="map-title">Venue Location</h3>
-                    <div class="map-container">
-                        <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1994.9053763833923!2d101.62191411612587!3d3.1342768175393647!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc35df5b0660a5%3A0x188ca475ecc85304!2sDamansara%20Utama%2C%20Petaling%20Jaya%2C%20Selangor!5e0!3m2!1sen!2smy!4v1697859119922!5m2!1sen!2smy"
-                            width="100%" 
-                            height="300" 
-                            style="border:0;" 
-                            allowfullscreen="" 
-                            loading="lazy" 
-                            referrerpolicy="no-referrer-when-downgrade">
-                        </iframe>
-                    </div>
-                    <div class="venue-info">
-                        <p><strong>Ruscus Hall, Forest Valley</strong></p>
-                        <p>Bandar Mahkota Cheras,<br> 43200 Cheras, Selangor</p>
-                        <div class="travel-advisory">
-                            <h4>⚠️ Important Travel Advisory</h4>
-                            <p>The event is during rush hour, so we anticipate heavier traffic. Please depart earlier to ensure a timely arrival.</p>
-                        </div>
+    <!-- Details Section Continued (for the map) -->
+    <section class="details details-continued fade-in-section">
+        <div class="container">
+            <div class="venue-map fade-in-item">
+                <h3 class="map-title">Venue Location</h3>
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1994.9053763833923!2d101.62191411612587!3d3.1342768175393647!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc35df5b0660a5%3A0x188ca475ecc85304!2sDamansara%20Utama%2C%20Petaling%20Jaya%2C%20Selangor!5e0!3m2!1sen!2smy!4v1697859119922!5m2!1sen!2smy"
+                        width="100%" 
+                        height="300" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+                <div class="venue-info">
+                    <p><strong>Ruscus Hall, Forest Valley</strong></p>
+                    <p>Bandar Mahkota Cheras,<br> 43200 Cheras, Selangor</p>
+                    <div class="travel-advisory">
+                        <h4>⚠️ Important Travel Advisory</h4>
+                        <p>The event is during rush hour, so we anticipate heavier traffic. Please depart earlier to ensure a timely arrival.</p>
                     </div>
                 </div>
             </div>

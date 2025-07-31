@@ -271,8 +271,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @keyframes zoomIn {
-    0% { transform: scale(1.02); }
-    100% { transform: scale(1.05); }
+    0% { transform: scale(1.1); }
+    100% { transform: scale(1.2); }
 }
 
 /* Mobile Hero - even more conservative scaling */
@@ -283,8 +283,8 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     @keyframes mobileZoomIn {
-        0% { transform: scale(1.01); }
-        100% { transform: scale(1.03); }
+        0% { transform: scale(1.05); }
+        100% { transform: scale(1.15); }
     }
 }
 
@@ -465,10 +465,6 @@ h1, h2, h3, h4, h5, h6 {
     
     .countdown-label {
         font-size: 0.8rem;
-    }
-    
-    .hero-content {
-        /* Removed padding and margin - clean mobile layout */
     }
 }
 
@@ -932,6 +928,11 @@ h1, h2, h3, h4, h5, h6 {
     gap: 4rem;
 }
 
+/* ADD THIS NEW RULE */
+.details-continued {
+    padding-top: 0;
+}
+
 .invitation-text {
     text-align: center;
     padding: 3rem;
@@ -980,6 +981,8 @@ h1, h2, h3, h4, h5, h6 {
     opacity: 0.8;
 }
 
+/* ADD or REPLACE these styles in your style.css file */
+
 /* Dress Code */
 .dress-code {
     background: white;
@@ -991,7 +994,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .dress-code-title {
     font-size: 2rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem; /* Adjusted margin */
     color: #8c7851;
 }
 
@@ -1000,8 +1003,11 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 500;
     color: #5d5149;
     font-style: italic;
+    margin-bottom: 1.5rem; /* Added margin */
 }
 
+/* REMOVE these old styles */
+/* 
 .dress-code-image {
     margin: 1.5rem 0;
     border-radius: 15px;
@@ -1019,6 +1025,95 @@ h1, h2, h3, h4, h5, h6 {
 .dress-code:hover .dress-example {
     transform: scale(1.05);
 }
+*/
+
+/* ========== ADD THESE NEW DRESS CODE STYLES ========== */
+.dress-code-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.dress-code-tab {
+    background: transparent;
+    border: 2px solid #e5e0d8;
+    color: #8c7851;
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dress-code-tab:hover {
+    background: #f8f4ee;
+    border-color: #8c7851;
+}
+
+.dress-code-tab.active {
+    background: #8c7851;
+    color: white;
+    border-color: #8c7851;
+}
+
+.dress-code-gallery-container {
+    position: relative;
+    min-height: 250px; /* Prevents layout shift */
+}
+
+.dress-code-grid {
+    display: none; /* Hidden by default */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    animation: fadeInGrid 0.5s ease;
+}
+
+@keyframes fadeInGrid {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.dress-code-grid.active {
+    display: grid;
+}
+
+.dress-item {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(140, 120, 81, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    aspect-ratio: 1 / 1; /* Makes the grid items square */
+}
+
+.dress-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(140, 120, 81, 0.2);
+}
+
+.dress-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Responsive adjustments for the grid */
+@media (max-width: 768px) {
+    .dress-code-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .dress-code-tabs {
+        gap: 0.5rem;
+    }
+    .dress-code-tab {
+        padding: 0.4rem 1rem;
+        font-size: 1rem;
+    }
+}
+/* ==================================================== */
 
 /* Timeline */
 /* 5. ELEGANT ORDER OF EVENTS - Replace existing timeline styles */
