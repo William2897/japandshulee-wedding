@@ -803,15 +803,6 @@ function init() {
             document.head.appendChild(viewport);
         }
     }
-    
-    // Add gallery subtitle for mobile
-    if (isMobile && masonryGrid) {
-        const gallery = document.querySelector('.gallery');
-        const subtitle = document.createElement('p');
-        subtitle.className = 'gallery-subtitle';
-        subtitle.textContent = 'Swipe through our beautiful moments';
-        gallery.insertBefore(subtitle, masonryGrid.parentNode);
-    }
 }
 
 // Event listeners with passive options for better performance
